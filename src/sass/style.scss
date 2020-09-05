@@ -41,12 +41,24 @@
 		background: rgba($color: #000000, $alpha: 0.1);
 		outline: none;
 		border: none;
-		color: #ffffff;
+		color: lighten($color: $primary_clr, $amount: 65%);
 		width: 100%;
+		text-transform: uppercase;
+		font-weight: bold;
+
+		option {
+			background: rgba($color: $primary_clr, $alpha: 0.5);
+			text-transform: capitalize;
+		}
 	}
 
 	&__image {
 		max-width: 100%;
 		max-height: fit-content;
+		margin-bottom: 20px;
+	}
+
+	&__btn {
+		@include btn;
 	}
 }

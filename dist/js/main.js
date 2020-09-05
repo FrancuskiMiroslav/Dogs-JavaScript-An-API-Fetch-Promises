@@ -4,11 +4,27 @@ $(document).ready((function () {
 }));
 
 window.addEventListener('DOMContentLoaded', (function () {
+	let dogContainer = document.getElementById('dog-container');
+	let dogBreedsSelect = document.getElementById('dog-breeds-select');
+
 	fetch('https://dog.ceo/api/breeds/list/all')
 		.then((res) => res.json())
 		.then((data) => {
-			const listOfBreeds = Object.keys(data.message);
+			let breedsArray = Object.keys(data.message);
 
-			console.log(listOfBreeds);
+			dogBreedsSelect.innerHTML = `
+        <option>Choose a dog breed</option>
+        ${breedsArray
+					.map((breed) => {
+						return `
+          <option>${breed}</option>
+          `;
+					})
+					.join('')}
+        `;
+
+			dogBreedsSelect.addEventListener('change', (e) => {
+				console.log(e.target.value);
+			});
 		});
 }));
