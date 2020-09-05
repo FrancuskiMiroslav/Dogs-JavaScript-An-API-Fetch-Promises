@@ -6,6 +6,7 @@ $(document).ready((function () {
 window.addEventListener('DOMContentLoaded', (function () {
 	let dogContainer = document.getElementById('dog-container');
 	let dogBreedsSelect = document.getElementById('dog-breeds-select');
+	const nextBtn = document.getElementById('next-btn');
 
 	fetch('https://dog.ceo/api/breeds/list/all')
 		.then((res) => res.json())
@@ -17,14 +18,25 @@ window.addEventListener('DOMContentLoaded', (function () {
         ${breedsArray
 					.map((breed) => {
 						return `
-          <option>${breed}</option>
+          <option class='breed'>${breed}</option>
           `;
 					})
 					.join('')}
-        `;
+		`;
 
 			dogBreedsSelect.addEventListener('change', (e) => {
-				console.log(e.target.value);
+				if (e.target.value != 'Choose a dog breed') {
+					fetch(`https://dog.ceo/api/breed/${e.target.value}/images`)
+						.then((res) => res.json())
+						.then((data) => {
+							let randomImg =
+								data.message[Math.floor(Math.random() * data.message.length)];
+							let image = document.getElementById('dog-img');
+
+							image.setAttribute('src', `${randomImg}`);
+							image.setAttribute('class', 'dog__image');
+						});
+				}
 			});
 		});
 }));
