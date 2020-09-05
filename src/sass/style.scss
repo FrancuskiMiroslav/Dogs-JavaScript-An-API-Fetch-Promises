@@ -55,9 +55,9 @@
 
 	&__image {
 		max-width: 100%;
-		max-height: fit-content;
 		margin-bottom: 20px;
 		transition: 1s all ease-in-out;
+		cursor: zoom-in;
 
 		&:hover {
 			transform: scale(1.1);

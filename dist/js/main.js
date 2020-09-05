@@ -4,7 +4,6 @@ $(document).ready((function () {
 }));
 
 window.addEventListener('DOMContentLoaded', (function () {
-	let dogContainer = document.getElementById('dog-container');
 	let dogBreedsSelect = document.getElementById('dog-breeds-select');
 	const nextBtn = document.getElementById('next-btn');
 
@@ -35,6 +34,18 @@ window.addEventListener('DOMContentLoaded', (function () {
 
 							image.setAttribute('src', `${randomImg}`);
 							image.setAttribute('class', 'dog__image');
+
+							nextBtn.addEventListener('click', (e) => {
+								console.log(e.target.previousElementSibling);
+
+								let activeImg = e.target.previousElementSibling;
+								let newRandomImg =
+									data.message[Math.floor(Math.random() * data.message.length)];
+
+								if (e) {
+									activeImg.setAttribute('src', `${newRandomImg}`);
+								}
+							});
 						});
 				}
 			});
