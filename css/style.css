@@ -106,12 +106,11 @@ a {
 /* line 56, src/sass/style.scss */
 .dog__image {
   max-width: 100%;
-  max-height: -webkit-fit-content;
-  max-height: -moz-fit-content;
-  max-height: fit-content;
   margin-bottom: 20px;
   -webkit-transition: 1s all ease-in-out;
   transition: 1s all ease-in-out;
+  cursor: -webkit-zoom-in;
+  cursor: zoom-in;
 }
 
 /* line 62, src/sass/style.scss */
